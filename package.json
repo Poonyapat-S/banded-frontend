@@ -1,10 +1,10 @@
 {
-  "name": "user-test",
+  "name": "banded",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "heroku-postbuild": "ng build --prod && npm install -g http-server-spa",
+    "start": "http-server-spa dist/user-test index.html $PORT",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
