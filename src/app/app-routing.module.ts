@@ -16,6 +16,8 @@ import { mySavedPostsComponent } from './mySavedPosts/mySavedPosts.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { dmPageComponent } from './dmPage/dmPage.component';
 import { conversationComponent } from './conversation/conversation.component';
+import { ReactionTimelineComponent } from './reaction-timeline/reaction-timeline.component';
+
 
 const routes: Routes = [
   { path: '', component: TimelineComponent},
@@ -34,7 +36,8 @@ const routes: Routes = [
   {path: 'mySavedPosts', component: mySavedPostsComponent},
   { path: 'profile/:userName', component: ProfileComponent},
   { path: 'dmPage', component: dmPageComponent },
-  { path: 'conversation', component: conversationComponent}
+  { path: 'conversation', component: conversationComponent},
+  { path: 'reactionTimeline', component: ReactionTimelineComponent}
 
   // // put all other paths above
   // { path: '404', component: ErrorPageComponent},
@@ -45,4 +48,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

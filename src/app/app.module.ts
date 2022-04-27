@@ -30,6 +30,12 @@ import { TopicTimelineComponent, TopicTimelineComponentProvider } from './topic-
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { FollowingTopicComponent } from './topic/following-topic/following-topic.component';
 import { conversationComponent } from './conversation/conversation.component';
+import { ReactionTimelineComponent } from './reaction-timeline/reaction-timeline.component';
+
+//page load spinnner things
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,14 +56,17 @@ import { conversationComponent } from './conversation/conversation.component';
     ErrorPageComponent,
     FollowingTopicComponent,
     dmPageComponent,
-    conversationComponent
+    conversationComponent,
+    ReactionTimelineComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    NgxSpinnerModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    NgbModule,
+    NgbModule
   ],
   providers: [authInterceptorProviders, UnauthInterceptorProvider, TopicTimelineComponentProvider],
   bootstrap: [AppComponent],
