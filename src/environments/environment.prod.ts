@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: 'dummyurl',
+  API_URL: 'https://banded-backend.herokuapp.com',
 };
