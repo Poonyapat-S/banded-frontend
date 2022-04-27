@@ -9,7 +9,9 @@
             <li><a routerLink="/create-account" class="nav-link">Create Account</a></li>
             <li><a routerLink="/profile" class="nav-link">Profile</a></li>
         </ul>
-
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="z-index:100" *ngIf="this.isLoggedIn">
+          <li><a [routerLink]="" (click)="logout()" class="nav-link">Logout</a></li>
+        </ul>
     </nav>
 
 </header>

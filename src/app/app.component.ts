@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TokenService } from './service/auth/token.service';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'user-test';
+  isLoggedIn = false;
+  constructor(private tokenService: TokenService) {}
 
+  updateLogInStatus(): void {
+    if(this.tokenService.getUser() == 'auth-user' || this.tokenService.getUser() == null) {
+      this.isLoggedIn = false;
+    }
+    else this.isLoggedIn = true;
+  }
 
 }

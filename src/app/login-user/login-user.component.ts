@@ -26,7 +26,7 @@ export class LoginUserComponent implements OnInit {
   login(): void {
     this.auth.login(this.credentials).subscribe({next: (data) => {this.tokenService.saveToken(data.accessToken);
         this.tokenService.saveUser(data);
-
+        console.log(data)
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenService.getUser().roles;
