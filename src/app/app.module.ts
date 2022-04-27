@@ -32,9 +32,14 @@ import { FollowingTopicComponent } from './topic/following-topic/following-topic
 import { conversationComponent } from './conversation/conversation.component';
 import { ReactionTimelineComponent } from './reaction-timeline/reaction-timeline.component';
 
-//page load spinnner things
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxSpinnerModule } from 'ngx-spinner';
+//page load things
+// for HttpClient import:
+
+// for Router import:
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+
+// for Core import:
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 @NgModule({
   declarations: [
@@ -61,9 +66,15 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    // for HttpClient use:
+    //LoadingBarHttpClientModule,
+
+    // for Router use:
+    LoadingBarRouterModule,
+
+    // for Core use:
+    LoadingBarModule,
     FormsModule,
-    NgxSpinnerModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule
