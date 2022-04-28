@@ -72,12 +72,31 @@ export class ProfileComponent implements OnInit {
 
   @HostListener('window:block')
   public blockUser() {
-    this.profileService.blockUser(this.viewingUserName).subscribe({next: response => alert("Blocked "+this.viewingUserName+"!"), error: err => console.log(err)});
+    this.profileService.blockUser(this.viewingUserName).subscribe({next: response => alert("Blocked "+this.viewingUserName), error: err => console.log(err)});
   }
 
   @HostListener('window:unblock')
   public unblockUser() {
-    this.profileService.unblockUser(this.viewingUserName).subscribe({next: response => alert("Unblocked "+this.viewingUserName+"!"), error: err => console.log(err)});
+    this.profileService.unblockUser(this.viewingUserName).subscribe({next: response => alert("Unblocked "+this.viewingUserName), error: err => console.log(err)});
   }
 
+  @HostListener('window:dolphin')
+  public setDolphin() {
+    this.profileService.setProfilePicture(1).subscribe({next: response => alert("Picture set!"), error: err => console.log(err)});
+  }
+
+  @HostListener('window:giraffe')
+  public setGiraffe() {
+    this.profileService.setProfilePicture(2).subscribe({next: response => alert("Picture set!"), error: err => console.log(err)});
+  }
+
+  @HostListener('window:lion')
+  public setLion() {
+    this.profileService.setProfilePicture(3).subscribe({next: response => alert("Picture set!"), error: err => console.log(err)});
+  }
+
+  @HostListener('window:tortoise')
+  public setTortoise() {
+    this.profileService.setProfilePicture(4).subscribe({next: response => alert("Picture set!"), error: err => console.log(err)});
+  }
 }
