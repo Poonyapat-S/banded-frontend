@@ -62,4 +62,8 @@ export class ProfileService {
   public setProfilePicture(sel: number) {
     return this.httpClient.post(environment.API_URL+"/api/user/setprofpic", sel);
   }
+
+  public getProfilePicture() {
+    return this.httpClient.get<string>(environment.API_URL+"/api/user/getprofpic");
+  }
 }
