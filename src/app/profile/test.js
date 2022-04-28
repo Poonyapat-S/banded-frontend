@@ -147,3 +147,16 @@ function submitForm() {
     document.getElementById("sP").src = "https://www.learnreligions.com/thmb/ItEkoS8widSPJlMvrwRf6LPJuKg=/3744x3744/smart/filters:no_upscale()/big-tortoise-185095684-58a888f43df78c345bfd0690.jpg";
     document.getElementById("bP").src = "https://www.learnreligions.com/thmb/ItEkoS8widSPJlMvrwRf6LPJuKg=/3744x3744/smart/filters:no_upscale()/big-tortoise-185095684-58a888f43df78c345bfd0690.jpg";
   }
+
+  function openDm() {
+    document.getElementById("ixnfoForm").style.display = "block";
+  }
+
+function closeDm() {
+    let msg = document.getElementById("newMessage").value;
+    //Return msg to backend - closeDm() == submit new message
+
+    document.getElementById("ixnfoForm").style.display = "none";
+    alert('Message Sent Successfully!')
+
+}
