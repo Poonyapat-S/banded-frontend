@@ -14,22 +14,25 @@ import { Profile, ProfileService } from '../service/profile/profile.service';
 })
 export class ReactionTimelineComponent implements OnInit {
   public currProfile: Profile;
+  public viewingProfile: Profile;
+  public viewingUserName="";
   public posts: Post[];
   private count: number;
 
-  constructor(private router: Router, private profileService: ProfileService, private postService: PostService, private route: ActivatedRoute, private tokenService: TokenService) {this.currProfile = new Profile(0, "", "", "", "", "", ""); this.posts=[], this.count=0}
+  constructor(private router: Router, private profileService: ProfileService, private postService: PostService, private route: ActivatedRoute, private tokenService: TokenService) {this.currProfile = new Profile(0, "", "", "", "", "", ""); this.viewingProfile = new Profile(0, "", "", "", "", "", ""); this.posts=[], this.count=0}
 
-  // EVERYTHING HERE IS STIL A TIMELINE PULL CALL
+  // EVERYTHING HERE IS STILL A TIMELINE PULL CALL
   ngOnInit() {
-    if(this.tokenService.getUser()) {
-      this.postService.get_timeline(0).pipe(delay(500)).subscribe((data: Post[]) => {this.posts=data; console.log(data)});
-      this.profileService.getProfile().subscribe(data => this.currProfile=data);
-    }
-    else {
-      console.log("guest");
-      this.postService.get_guest_timeline().pipe(delay(500)).subscribe((data: Post[]) => this.posts=data);
-    }
-    console.log(this.currProfile)
+    this.route.params.subscribe(params => {
+      this.viewingUserName=params['userName'];
+    })
+
+    //this.profileService.getUserProfile(params['userName']).subscribe({next: data=>this.viewingProfile=data, error: err=>alert("Not Found")});
+    //console.log("about to retrieve interactions with name "+this.viewingProfile.userID);
+    this.postService.getUsersInteractedPosts(this.viewingUserName).pipe(delay(500)).subscribe((data: Post[]) => {this.posts=data; console.log(data)});
+    //this.profileService.getProfile().subscribe(data => this.currProfile=data);
+
+    //console.log(this.currProfile)
   }
 
   public async loadProfile(): Promise<any> {

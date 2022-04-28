@@ -38,8 +38,8 @@ const routes: Routes = [
   { path: 'profile/:userName', component: ProfileComponent},
   { path: 'dmPage', component: dmPageComponent },
   { path: 'conversation/:otherUserID', component: conversationComponent},
-  { path: 'reaction-timeline', component: ReactionTimelineComponent},
-  { path: 'user-post-timeline', component: UserPostTimelineComponent}
+  { path: 'reaction-timeline/:userName', component: ReactionTimelineComponent},
+  { path: 'user-post-timeline/:userName', component: UserPostTimelineComponent}
 
   // // put all other paths above
   // { path: '404', component: ErrorPageComponent},
