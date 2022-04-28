@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService, Credentials } from '../service/auth/authentication.service';
 import { TokenService } from '../service/auth/token.service';
 import { Router } from '@angular/router';
+import { windowWhen } from 'rxjs';
 
 @Component({
   selector: 'app-login-user',
