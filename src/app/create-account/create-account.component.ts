@@ -41,6 +41,10 @@ export class CreateAccountComponent implements OnInit {
       alert("Password length should be between 8 to 24 characters");
       return;
     }
+    if(this.user.userName.length > 30) {
+      alert("Username is too long!");
+      return;
+    }
     this.httpClientService.createUser(this.user).subscribe({next: data => alert("Registration Successful!"), error: err => alert(err.error)});
   };
 }
