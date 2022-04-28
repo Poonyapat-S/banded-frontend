@@ -50,4 +50,12 @@ export class ProfileService {
   public getFollowedUserNames() {
     return this.httpClient.get<String[]>(environment.API_URL+"/api/followcontrol/getfollowedusers");
   }
+
+  public blockUser(userName: string) {
+    return this.httpClient.post(environment.API_URL+"/api/blockcontrol/blockuser", userName);
+  }
+
+  public unblockUser(userName: string) {
+    return this.httpClient.post(environment.API_URL+"/api/blockcontrol/unblockuser", userName);
+  }
 }
