@@ -58,4 +58,8 @@ export class ProfileService {
   public unblockUser(userName: string) {
     return this.httpClient.post(environment.API_URL+"/api/blockcontrol/unblockuser", userName);
   }
+
+  public setProfilePicture(sel: number) {
+    return this.httpClient.post(environment.API_URL+"/api/user/setprofpic", sel);
+  }
 }
