@@ -42,7 +42,7 @@ export class CreateAccountComponent implements OnInit {
       return;
     }
     if(this.user.userName.length > 30) {
-      alert("Username is too long!");
+      alert("Username is too long! Must be less than 30 characters!");
       return;
     }
     this.httpClientService.createUser(this.user).subscribe({next: data => alert("Registration Successful!"), error: err => alert(err.error)});
