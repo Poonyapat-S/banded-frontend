@@ -17,17 +17,18 @@ export class UserPostTimelineComponent implements OnInit {
   public posts: Post[];
   private count: number;
 
-  constructor(private router: Router, private profileService: ProfileService, private postService: PostService, private route: ActivatedRoute, private tokenService: TokenService) {this.currProfile = new Profile("", "", "", "", "", ""); this.posts=[], this.count=0}
+  constructor(private router: Router,private userPostTimeline: UserPostTimelineComponent, private profileService: ProfileService, private postService: PostService, private route: ActivatedRoute, private tokenService: TokenService) {this.currProfile = new Profile(0, "", "", "", "", "", ""); this.posts=[], this.count=0}
 
   ngOnInit() {
-    if(this.tokenService.getUser()) {
-      this.postService.get_timeline(0).pipe(delay(500)).subscribe((data: Post[]) => {this.posts=data; console.log(data)});
-      this.profileService.getProfile().subscribe(data => this.currProfile=data);
-    }
-    else {
-      console.log("guest");
-      this.postService.get_guest_timeline().pipe(delay(500)).subscribe((data: Post[]) => this.posts=data);
-    }
+    var username="";
+    this.route.params.subscribe(params => username=params["userName"]);
+    this.postService.get_created_posts_timeline(username).pipe(delay(500)).subscribe((data: Post[]) => {this.posts=data; console.log(data)});
+    this.profileService.getProfile().subscribe(data => this.currProfile=data);
+  }
+
+  public load_page(userName: string) {
+    this.postService.get_created_posts_timeline(userName).pipe(delay(500)).subscribe((data: Post[]) => {this.posts=data; console.log(data);});
+    this.profileService.getProfile().subscribe(data => this.currProfile=data);
     console.log(this.currProfile)
   }
 
@@ -62,6 +63,11 @@ export class UserPostTimelineComponent implements OnInit {
     // console.log(postTime);
     // return postTime.toISOString().slice(0, 10) + " " + postTime.toISOString().slice(11, 19)
     return formatDate(postTime, 'yyyy/MM/dd hh:mm a', "en-US");
+  }
+
+  toUserPosts(topicName: string) {
+    this.userPostTimeline.load_page(topicName);
+    this.router.navigate(['profile'])
   }
 
 }

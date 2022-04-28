@@ -18,8 +18,21 @@ export class PostService {
   public get_topic_timeline(topicName:string, count: number) {
     return this.httpClient.get<Post[]>(environment.API_URL+"/api/posts/topic/"+topicName+"?count="+count.toString());
   }
+
   public get_guest_timeline() {
     return this.httpClient.get<Post[]>(environment.API_URL+"/api/posts/guest/timeline");
+  }
+
+  public get_interaction_timeline(userID: string) {
+    return this.httpClient.get<Post[]>(environment.API_URL+"/api/interaction/getpostinteractions?userID="+userID);
+  }
+
+  // public get_saved_timeline(username: string) {
+  //   return this.httpClient.get<Post[]>(environment.API_URL+"/api/posts/guest/timeline", username);
+  // }
+
+  public get_created_posts_timeline(username: string) {
+    return this.httpClient.get<Post[]>(environment.API_URL+"/api/posts/targetTimeline?username="+username);
   }
 
   public convertDateTime(postTime: Date): string {

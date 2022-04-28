@@ -62,4 +62,8 @@ export class ProfileComponent implements OnInit {
     this.profileService.unfollowUser(this.viewingUserName).subscribe({next: response => alert("Unfollowed "+this.viewingUserName+"!"), error: err => console.log(err)});
   }
 
+  navigate(userName: string) {
+    this.router.navigate(['posts/'+userName]);
+  }
+
 }
