@@ -22,7 +22,7 @@ export class postViewingPageComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.tokenService.getUser()) {
-      
+
     } else {
       alert("Please sign in first!");
       this.router.navigate(['/login']);
@@ -100,6 +100,11 @@ export class postViewingPageComponent implements OnInit {
     } else {
       loadUnsaveButton();
     }
+  }
+
+  @HostListener('window:delete')
+  deletePost() {
+    this.postService.deletePost(this.currPost.postID).subscribe({next: response => alert("Deleted post!"), error: err => console.log(err)});
   }
 }
 

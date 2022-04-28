@@ -17,7 +17,7 @@
   <p class = "banded">Banded</p>
 
   <button id= "followThisUser" class = "followThisUser" onclick="followUser()">Follow This User</button>
-  <button class="followThisUser" style="top:22%;" onclick="deletePost()">Delete Post</button>
+  <button class="followThisUser" style="top:22%;" onclick="deletePostJS()">Delete Post</button>
 
 <div class="container">
     <!-- PLUG BACKEND CALLS HERE / Replace placeholders-->
@@ -33,7 +33,7 @@
     <button id ="heart-b" class= "heart-shape-b" onclick="toggleLike()"></button>
     <button id = "savePost" class = "savePost" onclick="toggleSave()">Save/Unsave Post</button>
     <a href="{{'/commentViewer/'+currPost.postID}}"><button id = "viewComments" class = "commentViewer">View Comments</button></a>
-    
+
 
     <button class="commentPost" onclick="openForm()">Comment On Post</button>
     <div class="form-popup" id="myForm">
@@ -42,10 +42,10 @@
       <input type="text" placeholder="Enter Comment" name="comment" id="newText">
       <button type="button"  class="btn submit" onclick="submitForm()">Submit</button>
       <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-      
+
     </form>
   </div>
-  
+
 </div>
 
 </body>

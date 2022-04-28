@@ -105,8 +105,8 @@ function followUser() {
 
 }
 
-function deletePost() {
-  alert('test');
+function deletePostJS() {
+  window.dispatchEvent(new CustomEvent('delete'));
 }
 
 
