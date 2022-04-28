@@ -38,14 +38,15 @@ body, html {
 /* For the 4 buttons on the left */
 .side-button {
   position: relative;
-  margin: 1% 1%;
-  left:25%;
-  
+  margin: 2% 10%;
+  /* left:2%; */
+
   text-align: center;
   color: black;
-  background-color: darkgrey;
+  text-decoration: inline-block;
+  background-color: lightgrey;
   font-size: 20px;
-  padding: 5px;
+  /* padding: 5px; */
 }
 /* End of 4 buttons on the left */
 
@@ -54,7 +55,6 @@ body, html {
 .middlepane {
   width: 60%;
   height: 100%;
-  
   float: left;
   /* background-color: lightgreen; */
   border-collapse: collapse;
@@ -137,6 +137,10 @@ body, html {
 /* Does nothing since putting href in the <a> tag gives all the visual indicators for the button */
 .reply-button {
   cursor: pointer; 
+}
+
+.deletePost:hover {
+  cursor: grab;
 }
 
 .refresh-button {

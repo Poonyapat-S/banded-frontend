@@ -41,7 +41,6 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 // for Core import:
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { UserPostTimelineComponent } from './user-post-timeline/user-post-timeline.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +63,7 @@ import { UserPostTimelineComponent } from './user-post-timeline/user-post-timeli
     dmPageComponent,
     conversationComponent,
     ReactionTimelineComponent,
-    UserPostTimelineComponent
+    UserPostTimelineComponent,
   ],
   imports: [
     BrowserModule,

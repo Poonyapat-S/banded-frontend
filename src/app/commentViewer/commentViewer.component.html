@@ -18,46 +18,51 @@
          <div class = "title"> Banded</div>
  
          <!-- if signed in displays profile info -->
-         <div class="user">
-           <div class="smallUserName">currProfile.userName</div>
+         <div class="user" *ngIf = "checkProfile()">
+           <div class="smallUserName">{{currProfile.userName}}</div>
            <img class= "smallProfileImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf1Mcs-qS5Q5-CO5gtMi3uhprMUS0ee7dijxa3nei0XEK41jFbXyWlIDr1CA0KKGdD33o&usqp=CAU" alt= usernameholder>
          </div>
        </div>
        <div class="leftpane">
-         
-         <!-- The four buttons on the left hand side -->
-         <div>
-           <p></p>
-           <p></p>
-           <a routerLink="/createPost" class="nav-link"> <button class="side-button">Create Post</button></a>
-           <p></p>
-           
-           <button class="side-button">Settings</button>
-           
-         </div>
+        <div>
+          <p></p>
+          <a routerLink="/createPost" class="nav-link"> <button class="side-button">Create Post</button></a>
+          <p></p>
+          <a href="/dmPage" class="nav-link"><button class="side-button">Direct Messages</button></a>
+          <p></p>
+          <a routerLink="/topics/following" class="nav-link"> <button class="side-button">Following Topics</button></a>
+          <p></p>
+          <a routerLink="/topics" class="nav-link"> <button class="side-button">Browse Topics</button></a>
+          <p></p>
+          <button class="side-button">Settings</button>
+        </div>
        </div>
        <div class="middlepane">
          <div class="timeline">
  
            <!-- start of first post -->
-           <!--Backend INsert for *ngFor = ...-->
-           <div class="post">
-             <div style="display: flex; justify-content: space-between;">
-               <span class="post-time"> this.convertDateTime(post.postTime) </span>
-               <span class="post-user"> post.userName </span>
-             </div>
-             
-     
-             <div class="post-content">
-               <div class = "post-title"> Here is the comment </div>
-               
-             </div>
-             <div class="post-footer">
-               <!-- The button that will redirect to the post page
-               currently redirects to login -->
-               
-             </div>
-           </div>
+           <div class="post" *ngFor="let post of posts">
+            <div style="display: flex; justify-content: space-between;">
+              <span class="post-time"> {{this.convertDateTime(post.postTime)}} </span>
+              <a href="{{'/profile/'+post.userName}}" *ngIf="post.userName != 'Anonymous'"><span class="post-user"> {{post.userName}} </span></a>
+              <span class="post-user"  *ngIf="post.userName == 'Anonymous'"> {{post.userName}} </span>
+            </div>
+            <div class="post-tags">
+              <div class="name"></div> Tags:
+              <a href="{{'/topic/'+post.topicID}}"><div class="tag"> {{post.topicName}} </div> </a>
+            </div>
+
+            <div class="post-content">
+              <div class = "post-title"> {{post.postTitle}} </div>
+              <div class="post-text"> {{post.postText}} </div>
+            </div>
+            <div class="post-footer">
+              <!-- The button that will redirect to the post page -->
+              <a routerLink="{{'/postViewingPage/'+post.postID}}" class="reply-button">Reply --></a>
+              <br>              
+              <button class="deletePost" style="border: none; color: rgb(242, 46, 46);" *ngIf="this.post.userName == this.currProfile.userName">Delete Post</button>
+            </div>
+          </div>
      
            <!-- spacing between posts -->
            <p></p>
@@ -70,10 +75,6 @@
            </div>
          </div>
        </div>
- 
-       
-     </div>
-     
-    
+     </div>    
   </body>
 </html>
