@@ -41,6 +41,7 @@ export class AppComponent {
     }
     if (event instanceof NavigationError) {
       this.showOverlay = false;
+      this.router.navigate(["/404"]);
     }
   }
   updateLogInStatus(): void {
