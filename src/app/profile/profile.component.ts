@@ -15,12 +15,16 @@ export class ProfileComponent implements OnInit {
   public editBioText: string;
   public currUserName: string;
   public viewingUserName: string;
+  public profilePictureLink: string;
 
   constructor(private profileService: ProfileService, private tokenService: TokenService, private router: Router, private route: ActivatedRoute, private dmService: DirectMessagesService) {
     console.log(this.tokenService.getUser());
     this.viewingUserName="";
     this.currProfile = new Profile(0, "", "", "", "", "", "");
     this.editBioText = "";
+    this.profilePictureLink = "https://today.duke.edu/sites/default/files/styles/story_hero/public/Dolphin%20Research%20Center_Louie.jpeg?itok=wo4vavnx";
+    this.profileService.getProfilePicture().subscribe({next: data => this.profilePictureLink=data});
+    console.log(this.profilePictureLink);
     this.currUserName = this.tokenService.getUser().username;
     this.route.params.subscribe(params => {
       if(params['userName']) {
