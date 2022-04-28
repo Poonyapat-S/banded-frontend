@@ -28,7 +28,7 @@
                 <!-- <button class="btn btn-success" (click)="createUser()">Create</button> //-->
             </form>
             <p></p>
-            <button (click)=login() class="btn btn-success">Login</button>
+            <button *ngIf="this.showLoginBtn" (click)=login() class="btn btn-success">Login</button>
 
         </div>
    </body>  
