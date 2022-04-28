@@ -1,6 +1,8 @@
+import { formatDate } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../class/post';
+import { TokenService } from '../service/auth/token.service';
 import { PostService } from '../service/post/post.service';
 
 declare function loadRedHeart(): any;
@@ -16,10 +18,15 @@ declare function loadUnsaveButton(): any;
 export class postViewingPageComponent implements OnInit {
 
   public currPost: any;
-  constructor(private router: Router, private route: ActivatedRoute, private postService: PostService) {this.route.params.subscribe(params => this.loadPost(params['postID']))};
+  constructor(private router: Router, private route: ActivatedRoute, private tokenService: TokenService, private postService: PostService) {this.route.params.subscribe(params => this.loadPost(params['postID']))};
 
   ngOnInit(): void {
-
+    if(this.tokenService.getUser()) {
+      
+    } else {
+      alert("Please sign in first!");
+      this.router.navigate(['/login']);
+    }
   }
 
   showOrSave(data: Post) {
@@ -39,6 +46,15 @@ export class postViewingPageComponent implements OnInit {
 
   getPostService(): PostService {
     return this.postService;
+  }
+
+  convertDateTime(postTime: Date): string {
+    // console.log(postTime);
+    // postTime = new Date(postTime);
+    // console.log(postTime);
+    // return postTime.toISOString().slice(0, 10) + " " + postTime.toISOString().slice(11, 19)
+    return formatDate(postTime, 'yyyy/MM/dd hh:mm a', "en-US");
+
   }
 
   @HostListener('window:reply', ['$event.detail'])
