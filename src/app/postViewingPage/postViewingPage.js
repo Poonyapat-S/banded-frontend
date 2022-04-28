@@ -105,6 +105,8 @@ function followUser() {
 
 }
 
-
+function deletePost() {
+  alert('test');
+}
 
 
