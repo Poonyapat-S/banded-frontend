@@ -21,7 +21,7 @@ export class TopicTimelineComponent implements OnInit {
   private count: number;
 
   constructor(private profileService: ProfileService, private topicService: TopicService, private postService: PostService, private route: ActivatedRoute, private router: Router) {
-    this.currProfile = new Profile("", "", "", "", "","");
+    this.currProfile = new Profile(0, "", "", "", "", "","");
     this.currTopic = new Topic("", "");
     this.posts=[];
     this.count=0;

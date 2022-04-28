@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 
 export class Profile{
   constructor(
+    public userID:number,
     public name:string,
     public userName:string,
     public email:string,

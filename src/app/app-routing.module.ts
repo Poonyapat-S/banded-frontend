@@ -34,7 +34,7 @@ const routes: Routes = [
   {path: 'mySavedPosts', component: mySavedPostsComponent},
   { path: 'profile/:userName', component: ProfileComponent},
   { path: 'dmPage', component: dmPageComponent },
-  { path: 'conversation', component: conversationComponent}
+  { path: 'conversation/:otherUserID', component: conversationComponent}
 
   // // put all other paths above
   // { path: '404', component: ErrorPageComponent},
