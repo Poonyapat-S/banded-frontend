@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../class/post';
 import { Profile, ProfileService } from '../service/profile/profile.service';
 import { CreatePostService } from '../service/create-post/create-post.service'
+import { TokenService } from '../service/auth/token.service';
 
 
 declare function makeAnon():void;
@@ -20,10 +21,15 @@ declare function makeAnon():void;
 export class createPostComponent implements OnInit {
 
 
-  constructor(private createPostService: CreatePostService, private router: Router) { }
+  constructor(private tokenService: TokenService, private createPostService: CreatePostService, private router: Router) { }
 
   ngOnInit() {
-
+    if(this.tokenService.getUser()) {
+      
+    } else {
+      alert("Please sign in first!");
+      this.router.navigate(['/login']);
+    }
   }
   @HostListener('window:onPost', ['$event.detail'])
   onPost(detail: Post) {

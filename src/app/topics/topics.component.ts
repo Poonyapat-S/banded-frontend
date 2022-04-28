@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Topic } from '../class/topic';
+import { TokenService } from '../service/auth/token.service';
 import { TopicService } from '../service/topic/topic.service';
 import { TopicTimelineComponent } from '../topic-timeline/topic-timeline.component';
 
@@ -15,20 +16,24 @@ export class TopicsComponent implements OnInit {
   // this page is to display all the topics
 
   public topics!: Topic[];
-  constructor(public router: Router, private topicTimeline: TopicTimelineComponent, private topicService: TopicService, private route: ActivatedRoute) {
+  constructor(private tokenService: TokenService, public router: Router, private topicTimeline: TopicTimelineComponent, private topicService: TopicService, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
-      if(params['following'] == "following") {
+      if((params['following'] == "following")) {
         this.topicService.getUserTopics().subscribe({next: data=>this.topics=data, error: err=>alert("Error")});
-      }
-      else {
-        alert("all topics")
-        this.topicService.getTopics().subscribe({next: data=>this.topics=data, error: err=>alert("Error")});
+      } else {
+        this.topicService.getTopics().subscribe({next: data=>this.topics=data, error: err=>alert("uh oh!")});
       }
     })
   }
 
 
   ngOnInit(): void {
+    if(this.tokenService.getUser()) {
+      
+    } else {
+      alert("Please sign in first!");
+      this.router.navigate(['/login']);
+    }
     // this.topicService.getTopics().subscribe(data => this.topics = data);
   }
 
