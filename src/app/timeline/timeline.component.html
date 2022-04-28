@@ -76,6 +76,8 @@
             <div class="post-footer">
               <!-- The button that will redirect to the post page -->
               <a routerLink="{{'/postViewingPage/'+post.postID}}" class="reply-button">Reply --></a>
+              <br>              
+              <button class="deletePost" style="border: none; color: rgb(242, 46, 46);" *ngIf="this.post.userName == this.currProfile.userName">Delete Post</button>
             </div>
           </div>
 
