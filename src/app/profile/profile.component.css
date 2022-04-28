@@ -196,7 +196,7 @@ table {
   text-decoration: inline-block;
   background-color: lightgrey;
   font-size: 20px;
-  position: absolute; left: 2%; top: 47%;
+  position: absolute; left: 2%; top: 52%;
   font-family: 'Courier New', Courier, monospace;
   cursor:pointer;
 }
@@ -207,7 +207,7 @@ table {
   text-decoration: inline-block;
   background-color: lightgrey;
   font-size: 20px;
-  position: absolute; left: 2%; top: 52%;
+  position: absolute; left: 2%; top: 47%;
   font-family: 'Courier New', Courier, monospace;
 }
 
