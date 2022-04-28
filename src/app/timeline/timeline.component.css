@@ -138,6 +138,10 @@ body, html {
   cursor: pointer; 
 }
 
+.deletePost:hover {
+  cursor: grab;
+}
+
 .refresh-button {
   margin: 10px;
   padding: 2px 5px;
