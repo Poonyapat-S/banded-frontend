@@ -180,13 +180,34 @@ table {
   font-family: 'Courier New', Courier, monospace;
 }
 
-.savedPosts {
+.reaction-timeline {
   text-align: center;
   color: black;
   text-decoration: inline-block;
   background-color: lightgrey;
   font-size: 20px;
   position: absolute; left: 2%; top: 42%;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.user-post-timeline {
+  text-align: center;
+  color: black;
+  text-decoration: inline-block;
+  background-color: lightgrey;
+  font-size: 20px;
+  position: absolute; left: 2%; top: 47%;
+  font-family: 'Courier New', Courier, monospace;
+  cursor:pointer;
+}
+
+.savedPosts {
+  text-align: center;
+  color: black;
+  text-decoration: inline-block;
+  background-color: lightgrey;
+  font-size: 20px;
+  position: absolute; left: 2%; top: 52%;
   font-family: 'Courier New', Courier, monospace;
 }
 

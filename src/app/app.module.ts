@@ -30,6 +30,18 @@ import { TopicTimelineComponent, TopicTimelineComponentProvider } from './topic-
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { FollowingTopicComponent } from './topic/following-topic/following-topic.component';
 import { conversationComponent } from './conversation/conversation.component';
+import { ReactionTimelineComponent } from './reaction-timeline/reaction-timeline.component';
+
+//page load things
+// for HttpClient import:
+
+// for Router import:
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+
+// for Core import:
+import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { UserPostTimelineComponent } from './user-post-timeline/user-post-timeline.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,14 +62,24 @@ import { conversationComponent } from './conversation/conversation.component';
     ErrorPageComponent,
     FollowingTopicComponent,
     dmPageComponent,
-    conversationComponent
+    conversationComponent,
+    ReactionTimelineComponent,
+    UserPostTimelineComponent
   ],
   imports: [
     BrowserModule,
+    // for HttpClient use:
+    //LoadingBarHttpClientModule,
+
+    // for Router use:
+    LoadingBarRouterModule,
+
+    // for Core use:
+    LoadingBarModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    NgbModule,
+    NgbModule
   ],
   providers: [authInterceptorProviders, UnauthInterceptorProvider, TopicTimelineComponentProvider],
   bootstrap: [AppComponent],
