@@ -66,6 +66,18 @@ export class ProfileComponent implements OnInit {
   public unfollowUser() {
     this.profileService.unfollowUser(this.viewingUserName).subscribe({next: response => alert("Unfollowed "+this.viewingUserName+"!"), error: err => console.log(err)});
   }
+
+  @HostListener('window:changeEmail', ['$event.detail'])
+  changeEmail(detail: any) {
+    this.profileService.changeEmail(detail.newEmail).subscribe({next: data=> {alert(data); console.log(data)}, error: err=>alert(err.error)});
+  }
+
+  @HostListener('window:changePassword', ['$event.detail'])
+  changePassword(detail: any) {
+    this.profileService.changePassword(detail.newPassword).subscribe({next: data=> {alert(data); console.log(data)}, error: err=>alert(err.error)});
+  }
+
+
   @HostListener('window:sendMessage', ['$event.detail'])
   sendMessage(detail: any) {
     var newRequest = new newDMRequest(this.currProfile.userName, detail.messageText);

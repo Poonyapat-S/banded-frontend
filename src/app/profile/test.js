@@ -78,9 +78,16 @@ function submitForm() {
 
     document.getElementById("oldE").value = null;
     document.getElementById("newE").value = null;
-
+    if(oldEmail != "" && newEmail != null) {
+      var event = new CustomEvent('changeEmail', {
+        detail: {
+          newEmail: newEmail,
+        }
+      })
+      window.dispatchEvent(event);
+    }
     //alert success or failure
-    alert("Email Succesfully Changed!");
+
   }
 
   function submitNewPassword() {
@@ -100,6 +107,14 @@ function submitForm() {
       alert('Your new password cannot be the same as the old!');
       return;
     }
+    if(oldPassword != "" && newPassword != null) {
+      var event = new CustomEvent('changePassword', {
+        detail: {
+          newPassword: newPassword,
+        }
+      })
+      window.dispatchEvent(event);
+    }
 
 
 
@@ -109,7 +124,7 @@ function submitForm() {
     document.getElementById("newP").value = null;
     document.getElementById("newP2").value = null;
     //alert success or failure
-    alert("Password Succesfully Changed!");
+    // alert("Password Succesfully Changed!");
   }
 
   //Control for blocking/unblocking a user

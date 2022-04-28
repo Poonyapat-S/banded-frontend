@@ -66,4 +66,12 @@ export class ProfileService {
   public getProfilePicture() {
     return this.httpClient.get<string>(environment.API_URL+"/api/user/getprofpic");
   }
+
+  public changeEmail(newEmail: string) {
+    return this.httpClient.post<string>(environment.API_URL+"/profile/changeEmail", newEmail);
+  }
+
+  public changePassword(newPassword: string) {
+    return this.httpClient.post<string>(environment.API_URL+"/profile/changePassword", newPassword);
+  }
 }
