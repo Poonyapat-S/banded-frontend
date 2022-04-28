@@ -4,9 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="./commentViewer.component.css" rel="stylesheet">
-    </head> 
-
-  
+    </head>
 <body>
      <!--Below Are the Verticle Lines for Margins-->
      <div class="v1"></div>
@@ -39,7 +37,8 @@
        </div>
        <div class="middlepane">
          <div class="timeline">
-           <div class="post">
+           <div class="main-post">
+             <!-- FIRST POST COMMETNED ON -->
             <div style="display: flex; justify-content: space-between;">
               <span class="post-time"> {{this.convertDateTime(currPost.postTime)}} </span>
               <a href="{{'/profile/'+currPost.userName}}" *ngIf="currPost.userName != 'Anonymous'"><span class="post-user"> {{currPost.userName}} </span></a>
@@ -49,25 +48,22 @@
               <a href="{{'/topic/'+currPost.topicID}}"><div class="tag"> {{currPost.topicName}} </div> </a>            
             </div>
 
-            <div class="post-content">
+            <div class="main-post-content">
               <div class = "post-title"> {{currPost.postTitle}} </div>
               <div class="post-text"> {{currPost.postText}} </div>
             </div>
-            <div class="post-footer">
+            <div class="main-post-footer">
               <a routerLink="{{'/postViewingPage/'+currPost.postID}}" class="reply-button">Reply --></a>
             </div>
           </div>
  
-           <!-- start of first post -->
+           <!-- start of first comment -->
            <div class="post" *ngFor="let comment of comments">
             <div style="display: flex; justify-content: space-between;">
               <span class="post-time"> {{this.convertDateTime(comment.postTime)}} </span>
-              <a href="{{'/profile/'+comment.userName}}" *ngIf="comment.userName != 'Anonymous'"><span class="post-user"> {{comment.userName}} </span></a>
-              <span class="post-user"  *ngIf="comment.userName == 'Anonymous'"> {{comment.userName}} </span>
+              <a href="{{'/profile/'+comment.userName}}" *ngIf="comment.userName != 'Anonymous'"><span class="post-user"> {{this.comment.userName}} </span></a>
             </div>
             <div class="post-tags">
-              <div class="name"></div> Tags:
-              <a href="{{'/topic/'+comment.topicID}}"><div class="tag"> {{comment.topicName}} </div> </a>
             </div>
 
             <div class="post-content">
