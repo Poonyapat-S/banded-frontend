@@ -39,28 +39,46 @@
        </div>
        <div class="middlepane">
          <div class="timeline">
- 
-           <!-- start of first post -->
-           <div class="post" *ngFor="let post of posts">
+           <div class="post">
             <div style="display: flex; justify-content: space-between;">
-              <span class="post-time"> {{this.convertDateTime(post.postTime)}} </span>
-              <a href="{{'/profile/'+post.userName}}" *ngIf="post.userName != 'Anonymous'"><span class="post-user"> {{post.userName}} </span></a>
-              <span class="post-user"  *ngIf="post.userName == 'Anonymous'"> {{post.userName}} </span>
+              <span class="post-time"> {{this.convertDateTime(currPost.postTime)}} </span>
+              <a href="{{'/profile/'+currPost.userName}}" *ngIf="currPost.userName != 'Anonymous'"><span class="post-user"> {{currPost.userName}} </span></a>
             </div>
             <div class="post-tags">
-              <div class="name"></div> Tags:
-              <a href="{{'/topic/'+post.topicID}}"><div class="tag"> {{post.topicName}} </div> </a>
+              <div class="name"></div> Topic:
+              <a href="{{'/topic/'+currPost.topicID}}"><div class="tag"> {{currPost.topicName}} </div> </a>            
             </div>
 
             <div class="post-content">
-              <div class = "post-title"> {{post.postTitle}} </div>
-              <div class="post-text"> {{post.postText}} </div>
+              <div class = "post-title"> {{currPost.postTitle}} </div>
+              <div class="post-text"> {{currPost.postText}} </div>
+            </div>
+            <div class="post-footer">
+              <a routerLink="{{'/postViewingPage/'+currPost.postID}}" class="reply-button">Reply --></a>
+            </div>
+          </div>
+ 
+           <!-- start of first post -->
+           <div class="post" *ngFor="let comment of comments">
+            <div style="display: flex; justify-content: space-between;">
+              <span class="post-time"> {{this.convertDateTime(comment.postTime)}} </span>
+              <a href="{{'/profile/'+comment.userName}}" *ngIf="comment.userName != 'Anonymous'"><span class="post-user"> {{comment.userName}} </span></a>
+              <span class="post-user"  *ngIf="comment.userName == 'Anonymous'"> {{comment.userName}} </span>
+            </div>
+            <div class="post-tags">
+              <div class="name"></div> Tags:
+              <a href="{{'/topic/'+comment.topicID}}"><div class="tag"> {{comment.topicName}} </div> </a>
+            </div>
+
+            <div class="post-content">
+              <div class = "post-title"> {{comment.postTitle}} </div>
+              <div class="post-text"> {{comment.postText}} </div>
             </div>
             <div class="post-footer">
               <!-- The button that will redirect to the post page -->
-              <a routerLink="{{'/postViewingPage/'+post.postID}}" class="reply-button">Reply --></a>
+              <a routerLink="{{'/postViewingPage/'+comment.postID}}" class="reply-button">Reply --></a>
               <br>              
-              <button class="deletePost" style="border: none; color: rgb(242, 46, 46);" *ngIf="this.post.userName == this.currProfile.userName">Delete Post</button>
+              <button class="deletePost" style="border: none; color: rgb(242, 46, 46);" *ngIf="this.comment.userName == this.currProfile.userName">Delete Post</button>
             </div>
           </div>
      

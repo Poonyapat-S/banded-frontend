@@ -14,20 +14,24 @@ import { Profile, ProfileService } from '../service/profile/profile.service';
 })
 export class commentViewerComponent implements OnInit {
   public currProfile: Profile;
-  public posts: Post[];
+  public currPost: Post;
+  public comments: Post[];
   private count: number;
 
-  constructor(private router: Router, private profileService: ProfileService, private postService: PostService, private route: ActivatedRoute,private tokenService: TokenService) {this.currProfile = new Profile(0, "", "", "", "", "", ""); this.posts=[], this.count=0}
+  constructor(private router: Router, private profileService: ProfileService, private postService: PostService, private route: ActivatedRoute,private tokenService: TokenService) {
+    // Date date = new Date();
+    this.currProfile = new Profile(0, "", "", "", "", "","");
+    this.currPost = new Post("", "", "", "", "", "", false, new Date());
+    this.comments=[];
+    this.count=0;
+  }
 
   ngOnInit() {
-    if(this.tokenService.getUser()) {
-      this.postService.get_timeline(0).pipe(delay(500)).subscribe((data: Post[]) => {this.posts=data; console.log(data)});
-      this.profileService.getProfile().subscribe(data => this.currProfile=data);
-    }
-    else {
-      console.log("guest");
-      this.postService.get_guest_timeline().pipe(delay(500)).subscribe((data: Post[]) => this.posts=data);
-    }
+    var postID="";
+    this.route.params.subscribe(params => postID=params["postID"]);
+    this.postService.getPostFromId(postID).pipe(delay(500)).subscribe(data => {this.currPost=data});
+    this.postService.get_post_comments(postID).pipe(delay(500)).subscribe((data: Post[]) => {this.comments=data; console.log(data);});
+    this.profileService.getProfile().subscribe(data => this.currProfile=data);
     console.log(this.currProfile)
   }
 
@@ -39,21 +43,13 @@ export class commentViewerComponent implements OnInit {
   }
 
   reloadPage(): void {
+    // this.count++;
     window.location.reload();
   }
 
 
   public getPostService(): PostService {
     return this.postService;
-  }
-
-  searchUser(userName:string) {
-    if(userName!="") {
-      this.router.navigate(['/profile/'+ userName])
-      alert('Searchign for profile ' + userName + "...");
-    } else {
-    alert("Please type a valid username");
-    }
   }
 
   convertDateTime(postTime: Date): string {

@@ -9,10 +9,14 @@ import { environment } from 'src/environments/environment';
 })
 export class PostService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   public get_timeline(count: number) {
     return this.httpClient.get<Post[]>(environment.API_URL+"/api/posts/timeline?count="+count.toString());
+  }
+
+  public get_post_comments(postID: string) {
+    return this.httpClient.get<Post[]>(environment.API_URL+"/api/posts/getComments?postId="+postID);
   }
 
   public get_topic_timeline(topicName:string, count: number) {

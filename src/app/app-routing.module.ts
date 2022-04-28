@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'topics', component: TopicsComponent},
   { path: 'topic/:topicID', component: TopicTimelineComponent},
   { path: 'topics/:following', component: TopicsComponent},
-  { path: 'commentViewer', component: commentViewerComponent},
+  { path: 'commentViewer/:postID', component: commentViewerComponent},
   {path: 'followedUsers', component: followedUsersComponent},
   {path: 'mySavedPosts', component: mySavedPostsComponent},
   { path: 'profile/:userName', component: ProfileComponent},
