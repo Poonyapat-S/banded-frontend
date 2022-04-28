@@ -20,22 +20,22 @@
     <div class="toppane">
       <!--Banded Header-->
       <p class = "banded"> Banded</p>
-      <div class="smallUserName">{{currProfile.userName}}</div>
+      <div class="smallUserName">{{this.currUserName}}</div>
       <img class="smallProfileImg"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf1Mcs-qS5Q5-CO5gtMi3uhprMUS0ee7dijxa3nei0XEK41jFbXyWlIDr1CA0KKGdD33o&usqp=CAU" alt= usernameholder>
     </div> <!--End of Top Pane-->
-    
+
   </div><!--End of Page Container-->
-  
- 
+
+
   <p class="userName">{{currProfile.name}}</p>
   <img id="sP" class= "smallProfileImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf1Mcs-qS5Q5-CO5gtMi3uhprMUS0ee7dijxa3nei0XEK41jFbXyWlIDr1CA0KKGdD33o&usqp=CAU" alt= usernameholder>
 
 
   <p  id="bio" class ="bio">{{currProfile.bio}}</p>
 
-  
+
   <img id="bP" class= "profileImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf1Mcs-qS5Q5-CO5gtMi3uhprMUS0ee7dijxa3nei0XEK41jFbXyWlIDr1CA0KKGdD33o&usqp=CAU" alt= usernameholder>
-  
+
 
   <!-- The four buttons on the left hand side-->
   <a routerLink="/createPost"><button class="createPost">Create Post</button></a>
@@ -63,7 +63,7 @@
   <button id="editPicture" class="editPic" onclick="openPicForm()" *ngIf="this.viewingUserName == this.currUserName">Profile Picture</button>
 
   <div class="form-popup" id="picForm">
-    <form action= "/action_page" class="pform-container"> 
+    <form action= "/action_page" class="pform-container">
       <h1 class="infoHeader">Change Profile Picture</h1>
         <table class="picTable">
           <tr><td style="font-weight: bold; text-decoration: underline; font-size: 20px;">Click Your New Profile Picture</td></tr>
@@ -81,7 +81,7 @@
         </table>
     </form>
   </div>
-    
+
 
   <div class="form-popup" id="infoForm">
     <form action= "/action_page" class="iform-container">
@@ -90,7 +90,7 @@
        <table class="infoTable">
 
         <tr>
-          <td style="font-weight: bold; text-decoration: underline; font-size: 20px;">Change Email</td> 
+          <td style="font-weight: bold; text-decoration: underline; font-size: 20px;">Change Email</td>
         </tr>
 
         <tr>
@@ -100,20 +100,20 @@
 
         <tr>
           <td>New Email:</td>
-          
+
           <td><input id= "newE" class= "infoInput" type="text" placeholder="New Email Goes Here"></td>
         </tr>
 
         <tr>
           <td>Submit New Email:</td>
-          
+
           <td><button onclick="submitNewEmail()" class= "infoInput" class="changeEmail">Submit</button></td>
         </tr>
 
          <!-----------------------------------End Of Email Change------------------------------------------------------------>
-        
+
          <tr>
-          <td style="font-weight: bold; text-decoration: underline; font-size: 20px;">Change Password</td> 
+          <td style="font-weight: bold; text-decoration: underline; font-size: 20px;">Change Password</td>
         </tr>
 
         <tr>
@@ -123,30 +123,30 @@
 
         <tr>
           <td>New Password:</td>
-          
+
           <td><input id="newP" class= "infoInput" type="text" placeholder="New Password Goes Here"></td>
         </tr>
 
         <tr>
           <td>Retype New Password:</td>
-          
+
           <td><input id="newP2" class= "infoInput" type="text" placeholder="New Password Goes Here"></td>
         </tr>
 
         <tr>
           <td>Submit New Password:</td>
-          
+
           <td><button onclick="submitNewPassword()" class= "infoInput" class="changeEmail">Submit</button></td>
         </tr>
 
-        
+
 
         <!-----------------------------------End Of Password Change------------------------------------------------------------>
        </table>
 
-      
+
        <button onclick="closeInfo()">Cancel</button>
-      
+
     </form>
   </div>
 

@@ -1,5 +1,3 @@
 <ngx-loading-bar [includeSpinner]="false" color="#DE6621" height="4px"></ngx-loading-bar>
-<app-header></app-header>
-<router-outlet></router-outlet>
-<!-- had to remove footer since it is static and overlaps post display on timeline -->
-<!-- <app-footer></app-footer> -->
+<app-header [isLoggedIn]="isLoggedIn"></app-header>
+<router-outlet (activate)="updateLogInStatus()"></router-outlet>

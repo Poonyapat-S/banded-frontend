@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TokenService } from './service/auth/token.service';
 
 import {
   Router,
@@ -15,11 +16,10 @@ import {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'user-test';
-
+  isLoggedIn = false;
   public showOverlay = true;
 
-  constructor(private router: Router) {
+  constructor(private tokenService: TokenService, private router: Router) {
 
     router.events.subscribe((event: RouterEvent) => {
       this.navigationInterceptor(event)
@@ -43,6 +43,11 @@ export class AppComponent {
       this.showOverlay = false;
     }
   }
-
+  updateLogInStatus(): void {
+    if(this.tokenService.getUser() == 'auth-user' || this.tokenService.getUser() == null) {
+      this.isLoggedIn = false;
+    }
+    else this.isLoggedIn = true;
+  }
 
 }
