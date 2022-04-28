@@ -38,15 +38,14 @@ body, html {
 /* For the 4 buttons on the left */
 .side-button {
   position: relative;
-  margin: 2% 10%;
-  /* left:2%; */
+  margin: 1% 1%;
+  left:25%;
 
   text-align: center;
   color: black;
-  text-decoration: inline-block;
-  background-color: lightgrey;
+  background-color: darkgrey;
   font-size: 20px;
-  /* padding: 5px; */
+  padding: 5px;
 }
 /* End of 4 buttons on the left */
 

@@ -44,7 +44,10 @@
   <button class= "settings">Settings</button>
   <a href="/followedUsers" class ="nav-link"><button class="followedUsers">Followed Users</button></a>
   <a routerLink="/mySavedPosts" class="nav-link"><button class="savedPosts">My Saved Posts</button></a>
-  <a routerLink="/reactionTimeline" class="nav-link"><button class="reactionTimeline">Recent Interations</button></a>
+  
+  <a routerLink="/reaction-timeline" class="nav-link"><button class="reaction-timeline">Recent Interations</button></a>
+  <a routerLink="/user-post-timeline" class="nav-link"><button class="user-post-timeline">Created posts</button></a>
+
 
   <!--The border less buttons for editBio and DeleteAccount-->
    <button class="editBio" onclick="openForm()" *ngIf="this.viewingUserName == this.currUserName">Edit Bio</button>

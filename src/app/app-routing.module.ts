@@ -17,6 +17,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { dmPageComponent } from './dmPage/dmPage.component';
 import { conversationComponent } from './conversation/conversation.component';
 import { ReactionTimelineComponent } from './reaction-timeline/reaction-timeline.component';
+import { UserPostTimelineComponent } from './user-post-timeline/user-post-timeline.component';
 
 
 const routes: Routes = [
@@ -37,7 +38,8 @@ const routes: Routes = [
   { path: 'profile/:userName', component: ProfileComponent},
   { path: 'dmPage', component: dmPageComponent },
   { path: 'conversation', component: conversationComponent},
-  { path: 'reactionTimeline', component: ReactionTimelineComponent}
+  { path: 'reaction-timeline', component: ReactionTimelineComponent},
+  { path: 'user-post-timeline', component: UserPostTimelineComponent}
 
   // // put all other paths above
   // { path: '404', component: ErrorPageComponent},
