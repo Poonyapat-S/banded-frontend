@@ -37,7 +37,8 @@
               "src/app/createPost/createPost.js",
               "src/app/postViewingPage/postViewingPage.js",
              "src/app/followedUsers/followedUsers.js",
-              "src/app/conversation/conversation.js"]
+              "src/app/conversation/conversation.js",
+            "src/app/timeline/timeline.js"]
           },
           "configurations": {
             "production": {
