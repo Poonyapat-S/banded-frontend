@@ -39,7 +39,8 @@
 
   <!-- The four buttons on the left hand side-->
   <a routerLink="/createPost"><button class="createPost">Create Post</button></a>
-  <a href="/dmPage" class="nav-link"><button class="directMessages">Direct Messages</button></a>
+  <a href="/dmPage" class="nav-link"><button *ngIf="this.viewingUserName == this.currUserName" class="directMessages">Direct Messages</button></a>
+  <button onclick="openDm()" class="directMessages" *ngIf="this.viewingUserName != this.currUserName">Send Message</button>
   <button class="followingTags">Following Tags</button>
   <button class= "settings">Settings</button>
   <a href="/followedUsers" class ="nav-link"><button class="followedUsers">Followed Users</button></a>
@@ -207,7 +208,19 @@
       }
   </script>
 
+<div class="form-popup" id="ixnfoForm">
+  <form action= "/action_page" class="ixform-container">
+    <h1 class="ixnfoHeader">Make New Message</h1>
 
+     <table class="infoTable">
+       <tr>New Message:</tr>
+       <tr><input id= "newMessage" class= "infoInput" type="text" placeholder="Type Your New Message"
+          style="padding:5px; width: 460px;"></tr>
+     </table>
+     <br>
+     <button onclick="closeDm()" style="width:100px">Send</button>
+     </form>
+</div>
 
 
 
