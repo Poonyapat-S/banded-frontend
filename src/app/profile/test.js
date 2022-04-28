@@ -115,8 +115,10 @@ function submitForm() {
   //Control for blocking/unblocking a user
   function blockControl() {
     if(document.getElementById("blockButton").textContent == "Block") {
+      window.dispatchEvent(new CustomEvent('block'));
       document.getElementById("blockButton").textContent = "Unblock";
     } else {
+      window.dispatchEvent(new CustomEvent('unblock'));
       document.getElementById("blockButton").textContent = "Block";
     }
   }

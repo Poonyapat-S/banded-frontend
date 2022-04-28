@@ -69,4 +69,15 @@ export class ProfileComponent implements OnInit {
     this.dmService.sendMessage(newRequest).subscribe(data => console.log(data));
   }
 
+
+  @HostListener('window:block')
+  public blockUser() {
+    this.profileService.blockUser(this.viewingUserName).subscribe({next: response => alert("Blocked "+this.viewingUserName+"!"), error: err => console.log(err)});
+  }
+
+  @HostListener('window:unblock')
+  public unblockUser() {
+    this.profileService.unblockUser(this.viewingUserName).subscribe({next: response => alert("Unblocked "+this.viewingUserName+"!"), error: err => console.log(err)});
+  }
+
 }
