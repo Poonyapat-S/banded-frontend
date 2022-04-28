@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Profile, ProfileService } from '../service/profile/profile.service';
 import { TokenService } from '../service/auth/token.service';
 import { Router } from '@angular/router';
+import { DirectMessagesService, newDMRequest } from '../service/DirectMessages/direct-messages.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,7 @@ export class ProfileComponent implements OnInit {
   public currUserName: string;
   public viewingUserName: string;
 
-  constructor(private profileService: ProfileService, private tokenService: TokenService, private router: Router, private route: ActivatedRoute) {
+  constructor(private profileService: ProfileService, private tokenService: TokenService, private router: Router, private route: ActivatedRoute, private dmService: DirectMessagesService) {
     console.log(this.tokenService.getUser());
     this.viewingUserName="";
     this.currProfile = new Profile(0, "", "", "", "", "", "");
@@ -60,6 +61,12 @@ export class ProfileComponent implements OnInit {
   @HostListener('window:unfollow')
   public unfollowUser() {
     this.profileService.unfollowUser(this.viewingUserName).subscribe({next: response => alert("Unfollowed "+this.viewingUserName+"!"), error: err => console.log(err)});
+  }
+  @HostListener('window:sendMessage', ['$event.detail'])
+  sendMessage(detail: any) {
+    var newRequest = new newDMRequest(this.currProfile.userName, detail.messageText);
+    console.log(detail.messageText);
+    this.dmService.sendMessage(newRequest).subscribe(data => console.log(data));
   }
 
 }

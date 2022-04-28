@@ -26,7 +26,7 @@ function submitForm() {
     document.getElementById("myDeleteAcc").style.display = "none";
   }
 
-  
+
 
   function submitDeletion(){
     /*Send back to timeline */
@@ -34,7 +34,7 @@ function submitForm() {
     closeFormDelete()
   }
 
-  
+
 
   function followControl () {
     if(document.getElementById('followButton').textContent == 'Follow/Unfollow' || document.getElementById('followButton').textContent == 'Follow') {
@@ -99,9 +99,9 @@ function submitForm() {
     } else if (document.getElementById("newP").value == document.getElementById("oldP").value) {
       alert('Your new password cannot be the same as the old!');
       return;
-    } 
-    
-    
+    }
+
+
 
 
     //Insert some code here to validify old password is correct and new password is accepted
@@ -125,25 +125,25 @@ function submitForm() {
   //EACH FUNCTION JUST NEEDS TO SEND BACKEND LINK TO NEW
   function submitDolphin() {
     document.getElementById("picForm").style.display = "none";
-    
+
     document.getElementById("sP").src = "https://today.duke.edu/sites/default/files/styles/story_hero/public/Dolphin%20Research%20Center_Louie.jpeg?itok=wo4vavnx";
     document.getElementById("bP").src = "https://today.duke.edu/sites/default/files/styles/story_hero/public/Dolphin%20Research%20Center_Louie.jpeg?itok=wo4vavnx";
   }
   function submitGiraffe() {
     document.getElementById("picForm").style.display = "none";
-    
+
     document.getElementById("sP").src = "https://kubrick.htvapps.com/htv-prod-media.s3.amazonaws.com/images/baby-giraffe-2-1605021557.jpg?crop=1.00xw:1.00xh;0,0&resize=640:*";
     document.getElementById("bP").src = "https://kubrick.htvapps.com/htv-prod-media.s3.amazonaws.com/images/baby-giraffe-2-1605021557.jpg?crop=1.00xw:1.00xh;0,0&resize=640:*";
   }
   function submitLion() {
     document.getElementById("picForm").style.display = "none";
-    
+
     document.getElementById("sP").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIWRGfspKQD2OFuHoRM1240tJfAjNObkelBA&usqp=CAU";
     document.getElementById("bP").src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIWRGfspKQD2OFuHoRM1240tJfAjNObkelBA&usqp=CAU";
   }
   function submitTortoise() {
     document.getElementById("picForm").style.display = "none";
-    
+
     document.getElementById("sP").src = "https://www.learnreligions.com/thmb/ItEkoS8widSPJlMvrwRf6LPJuKg=/3744x3744/smart/filters:no_upscale()/big-tortoise-185095684-58a888f43df78c345bfd0690.jpg";
     document.getElementById("bP").src = "https://www.learnreligions.com/thmb/ItEkoS8widSPJlMvrwRf6LPJuKg=/3744x3744/smart/filters:no_upscale()/big-tortoise-185095684-58a888f43df78c345bfd0690.jpg";
   }
@@ -155,8 +155,15 @@ function submitForm() {
 function closeDm() {
     let msg = document.getElementById("newMessage").value;
     //Return msg to backend - closeDm() == submit new message
-
+    if(msg != "" && msg != null) {
+      var event = new CustomEvent('sendMessage', {
+        detail: {
+          messageText: msg,
+        }
+      })
+      window.dispatchEvent(event);
+      alert('Message Sent Successfully!');
+    }
     document.getElementById("ixnfoForm").style.display = "none";
-    alert('Message Sent Successfully!')
 
 }
