@@ -17,7 +17,7 @@ export class dmPageComponent implements OnInit {
   public currUsername:string
   public conversations: Conversation[]=[];
 
-  constructor(private dmService: DirectMessagesService, private tokenService: TokenService) { this.currUsername=this.tokenService.getUser().username; }
+  constructor(private router: Router, private dmService: DirectMessagesService, private tokenService: TokenService) { this.currUsername=this.tokenService.getUser().username; }
 
   ngOnInit(): void {
     this.dmService.fetchConversations().subscribe({next: data => {console.log(data);this.conversations=data}, error: err=>console.log(err)});

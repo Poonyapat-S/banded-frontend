@@ -5,6 +5,7 @@ import { PostService } from '../service/post/post.service';
 import { DirectMessagesService, newDMRequest } from '../service/DirectMessages/direct-messages.service';
 import { Conversation } from '../class/conversation';
 import { delay } from 'rxjs';
+import { TokenService } from '../service/auth/token.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,9 +15,15 @@ import { delay } from 'rxjs';
 export class conversationComponent implements OnInit {
 
   public conversation: any;
-  constructor(private dmService: DirectMessagesService, private route:ActivatedRoute) {this.route.params.subscribe(params => this.loadDms(params["otherUserID"]));}
+  constructor(private router: Router, private tokenService: TokenService, private dmService: DirectMessagesService, private route:ActivatedRoute) {this.route.params.subscribe(params => this.loadDms(params["otherUserID"]));}
 
   ngOnInit(): void {
+    if(this.tokenService.getUser()) {
+      
+    } else {
+      alert("Please sign in first!");
+      this.router.navigate(['/login']);
+    }
   }
 
   loadDms(otherUserID: number): void {
