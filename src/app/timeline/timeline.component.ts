@@ -64,4 +64,8 @@ export class TimelineComponent implements OnInit {
     return formatDate(postTime, 'yyyy/MM/dd hh:mm a', "en-US");
 
   }
+
+  deletePost(postID: number) {
+    this.postService.deletePost(postID).subscribe({next: response => alert("Deleted post!"), error: err => console.log(err)});
+  }
 }

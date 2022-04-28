@@ -39,7 +39,7 @@ export class PostService {
   }
 
   public getIsLiked(id : number) {
-    return this.httpClient.get<boolean>(environment.API_URL+"/api/interaction/getlikestatus" + id.toString());
+    return this.httpClient.get<boolean>(environment.API_URL+"/api/interaction/getlikestatus/" + id.toString());
   }
 
   public likePost(id : number) {
@@ -51,7 +51,7 @@ export class PostService {
   }
 
   public getIsSaved(id : number) {
-    return this.httpClient.get<boolean>(environment.API_URL+"/api/interaction/getsavestatus" + id.toString());
+    return this.httpClient.get<boolean>(environment.API_URL+"/api/interaction/getsavestatus/" + id.toString());
   }
 
   public savePost(id : number) {
@@ -61,4 +61,9 @@ export class PostService {
   public unsavePost(id : number) {
     return this.httpClient.post(environment.API_URL+"/api/interaction/unsavepost", id);
   }
+
+  public deletePost(id : number) {
+    return this.httpClient.post(environment.API_URL+"/api/posts/delete/", id);
+  }
+
 }
