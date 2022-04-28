@@ -47,7 +47,7 @@
   <a routerLink="/mySavedPosts" class="nav-link"><button *ngIf="this.viewingUserName == this.currUserName" class="savedPosts">My Saved Posts</button></a>
 
   <a routerLink="{{'/reaction-timeline/'+this.viewingUserName}}" class="nav-link"><button class="reaction-timeline">Recent Interations</button></a>
-  <a routerLink="/user-post-timeline" class="nav-link"><button class="user-post-timeline">Created posts</button></a>
+  <a routerLink="{{'/user-post-timeline/'+this.viewingUserName}}" class="nav-link"><button class="user-post-timeline">Created posts</button></a>
 
 
   <!--The border less buttons for editBio and DeleteAccount-->

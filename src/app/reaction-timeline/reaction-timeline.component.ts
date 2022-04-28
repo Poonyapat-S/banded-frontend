@@ -29,7 +29,7 @@ export class ReactionTimelineComponent implements OnInit {
 
     //this.profileService.getUserProfile(params['userName']).subscribe({next: data=>this.viewingProfile=data, error: err=>alert("Not Found")});
     //console.log("about to retrieve interactions with name "+this.viewingProfile.userID);
-    this.postService.getUsersInteractedPosts(this.viewingUserName).pipe(delay(500)).subscribe((data: Post[]) => {this.posts=data; console.log(data)});
+    this.postService.getUsersCreatedPosts(this.viewingUserName).pipe(delay(500)).subscribe((data: Post[]) => {this.posts=data; console.log(data)});
     //this.profileService.getProfile().subscribe(data => this.currProfile=data);
 
     //console.log(this.currProfile)

@@ -34,6 +34,10 @@ export class PostService {
     return this.httpClient.get<Post[]>(environment.API_URL+"/api/interaction/getpostinteractions/"+userName);
   }
 
+  public getUsersCreatedPosts(userName: string) {
+    return this.httpClient.get<Post[]>(environment.API_URL+"/api/posts/targetTimeline?username="+userName);
+  }
+
   public convertDateTime(postTime: Date): string {
     // console.log(postTime);
     // postTime = new Date(postTime);

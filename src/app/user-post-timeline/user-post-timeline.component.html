@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head></head>
@@ -43,9 +44,12 @@
               <span class="post-time"> 3/4/22 9:00pm </span>
               <span class="post-user"> Kat </span>
             </div>
-            <div class="post-tags">
-              <div class="name"></div> Topic:
-              <div class="tag"> Bands </div>
+            <div class="post-tags" style="display: flex; justify-content: space-between;">
+              <span>
+                <div class="name"></div> Topic:
+                <div class="tag"> Bands </div>
+              </span>
+              <span class = "post-reaction">Liked</span>
             </div>
 
             <div class="post-content">
@@ -64,9 +68,12 @@
               <a href="{{'/profile/'+post.userName}}" *ngIf="post.userName != 'Anonymous'"><span class="post-user"> {{post.userName}} </span></a>
               <span class="post-user"  *ngIf="post.userName == 'Anonymous'"> {{post.userName}} </span>
             </div>
-            <div class="post-tags">
-              <div class="name"></div> Tags:
-              <a href="{{'/topic/'+post.topicID}}"><div class="tag"> {{post.topicName}} </div> </a>
+            <div class="post-tags" style="display: flex; justify-content: space-between;">
+              <span>
+                <div class="name"></div> Tags:
+                <a href="{{'/topic/'+post.topicID}}"><div class="tag"> {{post.topicName}} </div> </a>
+              </span>
+              <!-- <span class = "post-reaction">{{post.postReaction}}</span> HERE THIS NEEDS TO BE EDITRED -->
             </div>
 
             <div class="post-content">
