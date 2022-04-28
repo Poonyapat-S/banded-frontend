@@ -6,6 +6,7 @@ import { Post } from '../class/post';
 import { TokenService } from '../service/auth/token.service';
 import { PostService } from '../service/post/post.service';
 import { Profile, ProfileService } from '../service/profile/profile.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-user-post-timeline',
@@ -17,7 +18,7 @@ export class UserPostTimelineComponent implements OnInit {
   public posts: Post[];
   private count: number;
 
-  constructor(private router: Router, private profileService: ProfileService, private postService: PostService, private route: ActivatedRoute, private tokenService: TokenService) {this.currProfile = new Profile("", "", "", "", "", ""); this.posts=[], this.count=0}
+  constructor(private router: Router, private profileService: ProfileService, private postService: PostService, private route: ActivatedRoute, private tokenService: TokenService) {this.currProfile = new Profile(0, "", "", "", "", "", ""); this.posts=[], this.count=0}
 
   ngOnInit() {
     if(this.tokenService.getUser()) {

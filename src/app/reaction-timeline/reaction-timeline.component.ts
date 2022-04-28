@@ -17,7 +17,7 @@ export class ReactionTimelineComponent implements OnInit {
   public posts: Post[];
   private count: number;
 
-  constructor(private router: Router, private profileService: ProfileService, private postService: PostService, private route: ActivatedRoute, private tokenService: TokenService) {this.currProfile = new Profile("", "", "", "", "", ""); this.posts=[], this.count=0}
+  constructor(private router: Router, private profileService: ProfileService, private postService: PostService, private route: ActivatedRoute, private tokenService: TokenService) {this.currProfile = new Profile(0, "", "", "", "", "", ""); this.posts=[], this.count=0}
 
   // EVERYTHING HERE IS STIL A TIMELINE PULL CALL
   ngOnInit() {
